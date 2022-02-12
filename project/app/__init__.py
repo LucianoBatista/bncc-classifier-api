@@ -7,7 +7,7 @@ def create_app() -> FastAPI:
 
     from project.app.api import ml_model
 
-    app.include_router(ml_model.ml_model_router)
+    app.include_router(ml_model.ml_model_router, tags=["Model"], prefix="/api/v1")
 
     @app.get("/")
     def root():
