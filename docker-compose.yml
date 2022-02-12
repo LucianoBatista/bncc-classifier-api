@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./
+    image: fastapi_bncc_web
+    container_name: web
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 8000:8000
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0
