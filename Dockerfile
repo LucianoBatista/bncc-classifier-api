@@ -1,5 +1,5 @@
 # base official image
-FROM python:3.10.1-slim-buster
+FROM python:3.9-slim
 
 LABEL maintainer='Education Group - BNCC'
 
@@ -11,15 +11,15 @@ ENV \
   PYTHONUNBUFFERED=1
 
 RUN apt-get update \
-    && apt-get -y install netcat gcc \
-    && apt-get clean
+  && apt-get -y install netcat gcc \
+  && apt-get clean
 
 # copying requirements
 COPY Pipfile* ./
 
 RUN pip install -q --no-cache-dir \
-      pipenv===2022.1.8 && \
-        pipenv install --system
+  pipenv===2022.1.8 && \
+  pipenv install --system
 
 COPY ./ ./
 
